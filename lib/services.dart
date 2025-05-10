@@ -37,9 +37,7 @@ Future<List<AddressSuggestion>> fetchSuggestions(
   final Map<String, dynamic> result = jsonDecode(
     utf8.decode(response.bodyBytes),
   );
-  log.info(
-    "fetchSuggestions: input=$input, response=${response.statusCode}, body=${response.body}",
-  );
+
   if (response.statusCode == 200) {
     if (result['suggestions'] == null) {
       log.severe("No suggestions found for input=$input");
