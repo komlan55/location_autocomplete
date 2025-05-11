@@ -4,7 +4,7 @@
 Widget allowing you to search and select address using [Google Place API](https://developers.google.com/maps/documentation/places/web-service/op-overview)
 
 - Address autocommplete
-- Location autocomplete (in person/virtual) Similar Facebook Location Autocomplete
+- Location autocomplete (in person/virtual) Similar to Facebook Event Location Autocomplete
 
 ![Preview](assets/images/widget-preview.gif)
 ## Getting started
@@ -60,4 +60,3 @@ LocationSearchField(
 
 
 ## Todo
-- [ ] Add package to pub.dev
