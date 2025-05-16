@@ -9,6 +9,17 @@ final log = Logger("AddressAutocomplete");
 const String baseUrl = "https://places.googleapis.com/v1";
 
 class SimpleAddressSearchField extends StatefulWidget {
+  /// A simple address search field that uses Google Places API to fetch address suggestions.
+  /// The [googleApiKey] is required to use the Google Places API.
+  /// The [onSelected] callback is called when an address is selected.
+  /// The [minInputLength] specifies the minimum number of characters required to start searching.
+  /// The [languageCode] specifies the language for the address suggestions.
+  /// The [regionCodes] specifies the region codes to restrict the search to.
+  /// The [textEditingController] can be used to control the text field.
+  /// The [inputDecoration] can be used to customize the appearance of the text field.
+  /// The [validator] can be used to validate the input.
+  /// The [labelText] is the label for the text field.
+  /// The [hintText] is the hint text for the text field.
   const SimpleAddressSearchField({
     super.key,
     this.hintText = "Search address",
@@ -159,6 +170,12 @@ class _SimpleAddressSearchFieldState extends State<SimpleAddressSearchField> {
 }
 
 class SuggestionListItem extends StatelessWidget {
+  /// A list item that displays an address suggestion.
+  /// The [suggestion] is the address suggestion to display.
+  /// The [onSelected] callback is called when the suggestion is selected.
+  /// The [onDelete] callback is called when the delete button is pressed.
+  /// The [icon] is the icon to display in the leading position.
+
   const SuggestionListItem({
     super.key,
     required this.suggestion,
@@ -207,6 +224,14 @@ class SuggestionListItem extends StatelessWidget {
 }
 
 class AdvancedAddressSearchView extends StatefulWidget {
+  /// An advanced address search view that allows users to select an address
+  /// from a list of suggestions.
+  /// The [googleApiKey] is required to use the Google Places API.
+  /// The [initialAddressSuggestion] is the initial address suggestion to display.
+  /// The [onSelected] callback is called when an address is selected.
+  /// The [textEditingController] can be used to control the text field.
+  /// The [onDelete] callback is called when the delete button is pressed.
+
   const AdvancedAddressSearchView({
     super.key,
     required this.googleApiKey,
@@ -337,16 +362,6 @@ class _AdvancedAddressSearchViewState extends State<AdvancedAddressSearchView> {
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
-              // CircleAvatar(
-              //   backgroundColor: Colors.grey[300],
-              //   child: IconButton(
-              //     icon: Icon(Icons.near_me, color: Colors.blue),
-              //     onPressed: () {
-              //       Navigator.pop(context, _currentSuggestion);
-              //     },
-              //   ),
-              // ),
             ],
           ),
           const SizedBox(height: 10),
@@ -411,6 +426,13 @@ class _AdvancedAddressSearchViewState extends State<AdvancedAddressSearchView> {
 }
 
 class LocationSearchField extends StatefulWidget {
+  /// A location search field that allows users to select a physical address
+  /// or a virtual location.
+  /// The [googleApiKey] is required to use the Google Places API.
+  /// The [onSelected] callback is called when a location is selected.
+  /// The [inputDecoration] can be used to customize the appearance of the text field.
+  /// The [hintText] is the hint text for the text field.
+  /// The [labelText] is the label for the text field.
   final String hintText;
   final String labelText;
   final String googleApiKey;
@@ -510,6 +532,9 @@ class _LocationSearchFieldState extends State<LocationSearchField>
 }
 
 class VirtualLocationView extends StatefulWidget {
+  /// A view that allows users to select a virtual location.
+  /// The [onSubmit] callback is called when a virtual location is selected.
+  /// The [initialLocation] is the initial virtual location to display.
   const VirtualLocationView({
     super.key,
     required this.onSubmit,

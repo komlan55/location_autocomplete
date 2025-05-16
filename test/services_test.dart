@@ -1,4 +1,3 @@
-import 'package:location_autocomplete/logger.dart';
 import 'package:location_autocomplete/models.dart';
 import 'package:location_autocomplete/services.dart';
 import 'package:mockito/annotations.dart';
