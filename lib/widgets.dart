@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
-final log = getLogger("AddressAutocomplete");
+final log = Logger("AddressAutocomplete");
 const String baseUrl = "https://places.googleapis.com/v1";
 
 class SimpleAddressSearchField extends StatefulWidget {
@@ -129,7 +129,7 @@ class _SimpleAddressSearchFieldState extends State<SimpleAddressSearchField> {
               languageCode: widget.languageCode,
             );
           } catch (e) {
-            log.severe("Failed fetched address suggestions: Error $e");
+            log.e("Failed fetched address suggestions: Error $e");
           }
 
           if (searchingWithQuery != textEditingValue.text) {
@@ -150,7 +150,7 @@ class _SimpleAddressSearchFieldState extends State<SimpleAddressSearchField> {
 
             widget.onSelected(address);
           } catch (e) {
-            log.severe("Failed to fetch address details: $e");
+            log.e("Failed to fetch address details: $e");
           }
         },
       ),
@@ -300,11 +300,11 @@ class _AdvancedAddressSearchViewState extends State<AdvancedAddressSearchView> {
         _isLoading = false;
       });
     } on http.ClientException catch (e) {
-      log.severe("Error fetching suggestions: $e");
+      log.e("Error fetching suggestions: $e");
       errorMessage =
           "Please ensure that your device is connected to the internet and try again. ";
     } catch (e) {
-      log.severe("Error fetching suggestions: $e");
+      log.e("Error fetching suggestions: $e");
       errorMessage = "An error occurred while fetching suggestions";
     } finally {
       setState(() {

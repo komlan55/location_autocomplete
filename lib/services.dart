@@ -4,7 +4,7 @@ import 'package:location_autocomplete/logger.dart';
 import 'package:location_autocomplete/models.dart';
 import 'package:http/http.dart' as http;
 
-var log = getLogger("Services");
+var log = Logger("Services");
 const String baseUrl = "https://places.googleapis.com/v1";
 
 Future<List<AddressSuggestion>> fetchSuggestions(
@@ -40,7 +40,7 @@ Future<List<AddressSuggestion>> fetchSuggestions(
 
   if (response.statusCode == 200) {
     if (result['suggestions'] == null) {
-      log.severe("No suggestions found for input=$input");
+      log.i("No suggestions found for input=$input");
       return [];
     }
     List<AddressSuggestion> addressSuggestions =
@@ -52,7 +52,7 @@ Future<List<AddressSuggestion>> fetchSuggestions(
     var exception = ApiException.fromJson(result["error"]);
     throw exception;
   } else {
-    log.severe(
+    log.e(
       "Failed fetching for input=$input: Http code ${response.statusCode}, Body: ${response.body}",
     );
     throw Exception('Failed to fetch suggestion for input=$input.');
@@ -90,7 +90,7 @@ Future<Address?> fetchPlaceDetailFromId(
     var exception = ApiException.fromJson(result);
     throw exception;
   } else {
-    log.severe("Failed fetching place $placeId", result["error"]["details"]);
+    log.e("Failed fetching place $placeId", result["error"]["details"]);
     throw Exception('Failed to fetch place details for $placeId.');
   }
 }
