@@ -26,6 +26,9 @@ class VirtualLocation extends Location {
 }
 
 class Address extends Location {
+  // The formatted address of the place details of the Google Places API.
+  // This is a human-readable address that may not be the same as the
+  // address components.
   final String formattedAddress;
   String? mainText;
   String? secondaryText;
@@ -54,6 +57,10 @@ class Address extends Location {
   });
 
   factory Address.fromJson(Map<String, dynamic> json) {
+    // Creates an instance of the class from a JSON map.
+    //
+    // Takes a [Map<String, dynamic>] and returns a new instance
+    // with fields populated from the JSON data.
     String formattedAddress = json['formattedAddress'];
     final addressComponents = json['addressComponents'];
     double longitude = json['location']['longitude'];
@@ -111,6 +118,9 @@ class Address extends Location {
 }
 
 class AddressSuggestion {
+  // The formated place prediction based on the Google Places API.
+  // This is a human-readable address that may not be the same as the
+  // place prediction.
   final String placeId;
   final String mainText;
   final String fullText;
@@ -129,6 +139,9 @@ class AddressSuggestion {
   }
 
   factory AddressSuggestion.fromJson(Map<String, dynamic> json) {
+    // Creates an instance of the class from a JSON map.
+    //
+    // Takes a [Map<String, dynamic>] and returns a new instance
     var prediction = json['placePrediction'] as Map<String, dynamic>;
     String placeID = prediction['placeId'] as String;
 
@@ -145,6 +158,8 @@ class AddressSuggestion {
     );
   }
   static void sortSuggestions(List<AddressSuggestion> suggestions) {
+    // Sorts the suggestions based on the isSelected property.
+    // The selected suggestions will be at the top of the list.
     suggestions.sort((a, b) {
       if (a.isSelected == true && b.isSelected != true) {
         return -1;
@@ -157,6 +172,7 @@ class AddressSuggestion {
 }
 
 class PlaceType {
+  // The type of place based on the Google Places API.
   final String type;
   final IconData icon;
   final String displayText;
@@ -179,6 +195,7 @@ class PlaceType {
 }
 
 class ApiException implements Exception {
+  // The exception class for the Google Places API.
   final String message;
   final int code;
   final String status;
